@@ -1,6 +1,6 @@
-# sell
+# vue仿饿了么
 
-> sell app
+> 技术栈 vue2.0 + vue-router + vue-cli + vue-resource + scss + webpack
 
 ## Build Setup
 
