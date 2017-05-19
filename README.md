@@ -1,6 +1,6 @@
-# vue仿饿了么
+## vue仿饿了么
 
-> 技术栈 vue2.0 + vue-router + vue-cli + vue-resource + scss + webpack
+> 技术栈 vue2.0 + vue-router + vue-cli + vue-resource + better-scroll + scss + webpack
 
 ## Build Setup
 
