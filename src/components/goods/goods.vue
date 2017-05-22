@@ -2,7 +2,8 @@
     <div class="goods">
         <div class="menu-wrapper" ref="menuWrapper">
             <ul>
-                <li v-for="(item, index) in goods" class="menu-item" :class="{'current': currentIndex === index}" @click="selectMenu(index,$event)">
+                <li v-for="(item, index) in goods" class="menu-item" :class="{'current': currentIndex === index}"
+                    @click="selectMenu(index,$event)">
                     <span class="text border-1px">
                         <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{ item.name }}
                     </span>
@@ -41,12 +42,14 @@
         <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
                   :min-price="seller.minPrice"></shopcart>
     </div>
+    <!--<div :food="selectedFood"></div>-->
 </template>
 
 <script type="text/ecmascript-6">
     import BScroll from 'better-scroll';
     import shopcart from '../shopcart/shopcart';
     import cartcontrol from '../cartControl/cartControl';
+//    import food from  '../food/food';
 
     const ERR_OK = 0;
 
@@ -62,6 +65,8 @@
                 listHeight: [],
                 scrollY: 0
             };
+//            selectFood: {
+//            }
         },
         computed: {
             currentIndex () {
@@ -134,6 +139,12 @@
                     this.listHeight.push(height);
                 }
             }
+//            selectFood (food, event) {
+//                if (!event._constructed) {
+//                    return;
+//                }
+//                this.selectedFood = food;
+//            }
         },
         components: {
             shopcart,
