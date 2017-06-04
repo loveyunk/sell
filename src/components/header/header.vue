@@ -202,9 +202,9 @@
             height: 28px;
             line-height: 28px;
             padding: 0 22px 0 12px;
-            white-space: normal;
             overflow: hidden;
             text-overflow: ellipsis;
+            white-space: nowrap;
             background: rgba(7, 17, 27, .2);
             .bulletin-title {
                 display: inline-block;

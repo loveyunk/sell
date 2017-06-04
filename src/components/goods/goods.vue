@@ -15,7 +15,7 @@
                 <li v-for="item in goods" class="food-list food-list-hook">
                     <h1 class="title">{{ item.name }}</h1>
                     <ul>
-                        <li v-for="food in item.foods" class="food-item border-1px">
+                        <li @click="selectFood(food, $event)" v-for="food in item.foods" class="food-item border-1px">
                             <div class="icon">
                                 <img width="57px" :src="food.icon" alt="">
                             </div>
@@ -41,15 +41,15 @@
         </div>
         <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
                   :min-price="seller.minPrice"></shopcart>
+        <food :food="selectedFood" ref="food"></food>
     </div>
-    <!--<div :food="selectedFood"></div>-->
 </template>
 
 <script type="text/ecmascript-6">
     import BScroll from 'better-scroll';
     import shopcart from '../shopcart/shopcart';
     import cartcontrol from '../cartControl/cartControl';
-//    import food from  '../food/food';
+    import food from '../food/food';
 
     const ERR_OK = 0;
 
@@ -63,10 +63,9 @@
             return {
                 goods: [],
                 listHeight: [],
-                scrollY: 0
+                scrollY: 0,
+                selectedFood: {}
             };
-//            selectFood: {
-//            }
         },
         computed: {
             currentIndex () {
@@ -115,6 +114,15 @@
                 let el = foodList[index];
                 this.foodsScroll.scrollToElement(el, 300);
             },
+
+            selectFood (food, event) {
+                if (!event._constructed) {
+                    return;
+                }
+                this.selectedFood = food;
+                this.$refs.food.show();
+            },
+
             _initScroll () {
                 this.meunScroll = new BScroll(this.$refs.menuWrapper, {
                     click: true
@@ -139,16 +147,11 @@
                     this.listHeight.push(height);
                 }
             }
-//            selectFood (food, event) {
-//                if (!event._constructed) {
-//                    return;
-//                }
-//                this.selectedFood = food;
-//            }
         },
         components: {
             shopcart,
-            cartcontrol
+            cartcontrol,
+            food
         }
     };
 </script>
